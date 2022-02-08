@@ -1,0 +1,62 @@
+# -------------------------------------------------------------------------------
+# Filename:     Dockerfile
+# UpdateDate:   2021/11/14
+# Description:  Build docker images for opencv-mlu.
+# Example:
+# Depends:      Based on Ubuntu 16.04
+# Notes:
+# -------------------------------------------------------------------------------
+# 0.Start FROM ubuntu:16.04 image
+FROM ubuntu:16.04
+
+MAINTAINER CambriconKnight <cambricon_knight@163.com>
+
+ARG cntoolkit_package=cntoolkit_1.7.5-1.ubuntu16.04_amd64.deb
+ARG mlu_platform=MLU270
+ARG with_cntoolkit_installed=yes
+
+ARG cncv_package=cncv_0.4.602-1.ubuntu16.04_amd64.deb
+ARG mlu_platform=MLU270
+ARG with_cncv_installed=yes
+
+# 1.Sync files
+RUN echo -e 'nameserver 114.114.114.114' > /etc/resolv.conf
+COPY ./docker/* /temp/
+WORKDIR /temp/
+RUN cp sources_16.04.list /etc/apt/sources.list
+
+# 2.Pre-installed software
+ENV DEBIAN_FRONTEND=noninteractive
+RUN bash ./pre_packages.sh
+
+# 3.Set ENV && Clean
+ENV LANG C.UTF-8
+ENV TIME_ZONE Asia/Shanghai
+RUN echo "${TIME_ZONE}" > /etc/timezone && \
+    ln -sf /usr/share/zoneinfo/${TIME_ZONE} /etc/localtime && \
+    rm -rf /temp/ && rm -rf /var/lib/apt/lists/* && \
+    apt-get clean
+
+# 4.Sync files for opencv-mlu
+WORKDIR /root/opencv-mlu/
+#COPY . /root/opencv-mlu/
+COPY ./opencv-mlu /root/opencv-mlu/
+
+RUN if [ "$with_cntoolkit_installed" = "yes" ]; then dpkg -i /root/opencv-mlu/$cntoolkit_package \
+    && apt -o Accquire::AllowInsecureRepositories=true update \
+    && apt install -y cndev cndrv cnrt cncodec \
+    && rm -rf /root/opencv-mlu/$cntoolkit_package; fi
+
+RUN if [ "$with_cncv_installed" = "yes" ]; then dpkg -i /root/opencv-mlu/$cncv_package \
+    && rm -rf /root/opencv-mlu/$cncv_package; fi
+
+# 5.Pre-installed software
+#COPY ./docker/build-opencv-mlu.sh /root/opencv-mlu/
+#RUN bash ./build-opencv-mlu.sh
+
+# 6.Set WorkDir
+ENV NEUWARE_HOME=/usr/local/neuware
+ENV LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${NEUWARE_HOME}/lib64
+ENV OPENCV_TEST_DATA_PATH=/root/opencv-mlu/opencv_extra/testdata
+ENV WORK_DIR /root/opencv-mlu
+WORKDIR /root/opencv-mlu

@@ -31,10 +31,11 @@ if [ ! -f "${FILENAME_PATCH_OPENCV_EXTRA}" ];then
     wget -O $FILENAME_PATCH_OPENCV_EXTRA https://github.com/opencv/opencv_extra/archive/refs/tags/4.5.3.tar.gz
 else
     echo "File(${FILENAME_PATCH_OPENCV_EXTRA}): Exists!"
-    tar zxvf $FILENAME_PATCH_OPENCV_EXTRA
-    if [ -d "${PATH_WORK_TMP}" ];then rm -rvf $PATH_WORK_TMP; fi
-    mv $DIR_PATCH_OPENCV_EXTRA $PATH_WORK_TMP
 fi
+
+tar zxvf $FILENAME_PATCH_OPENCV_EXTRA
+if [ -d "${PATH_WORK_TMP}" ];then rm -rvf $PATH_WORK_TMP; fi
+mv $DIR_PATCH_OPENCV_EXTRA $PATH_WORK_TMP
 
 ## 4.2. set OPENCV_TEST_DATA_PATH
 export OPENCV_TEST_DATA_PATH=$WORK_DIR/$PATH_WORK_TMP/testdata

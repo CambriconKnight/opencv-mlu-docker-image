@@ -36,6 +36,8 @@
 | OpenCV                | opencv-4.5.3.tar.gz                          | 官方GitHub [下载](https://github.com/opencv/opencv/archive/refs/tags/4.5.3.tar.gz) |
 | OpenCV-Extra          | opencv_extra-4.5.3.tar.gz                    | 官方GitHub [下载](https://github.com/opencv/opencv_extra/archive/refs/tags/4.5.3.tar.gz) |
 
+*以上软件包涉及FTP手动下载的,可下载到本地[dependent_files](./dependent_files)目录下,方便对应以下步骤中的提示操作。*
+
 ## 1.3. 资料下载
 
 Ubuntu16.04: http://mirrors.aliyun.com/ubuntu-releases/16.04

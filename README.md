@@ -26,13 +26,13 @@
 | 名称                   | 版本/文件                                    | 备注            |
 | :-------------------- | :-------------------------------             | :--------------- |
 | Linux OS              | Ubuntu16.04/Ubuntu18.04/CentOS7              | 宿主机操作系统   |
-| Driver_MLU270         | neuware-mlu270-driver-aarch64-4.9.8.tar.gz   | 官方FTP [下载](ftp://download.cambricon.com:8821/product/GJD/MLU270/1.7.602/Ubuntu18.04/Driver/neuware-mlu270-driver-dkms_4.9.5_all.deb)   |
-| CNToolkit_MLU270      | cntoolkit_1.7.5-1.ubuntu18.04_amd64.deb      | 官方FTP [下载](ftp://sdgsxxjt@download.cambricon.com:8821/product/GJD/MLU270/1.7.602/Ubuntu18.04/CNToolkit/cntoolkit_1.7.5-1.ubuntu18.04_amd64.deb)   |
-| CNCV_MLU270           | cncv_0.4.602-1.ubuntu18.04_amd64.deb         | 官方FTP [下载](ftp://sdgsxxjt@download.cambricon.com:8821/product/GJD/MLU270/1.7.602/Ubuntu18.04/CNCV/cncv_0.4.602-1.ubuntu18.04_amd64.deb)   |
+| Driver_MLU270         | neuware-mlu270-driver-aarch64-4.9.8.tar.gz   | 官方FTP [下载](ftp://username@download.cambricon.com:8821/product/GJD/MLU270/1.7.602/Ubuntu18.04/Driver/neuware-mlu270-driver-dkms_4.9.5_all.deb)   |
+| CNToolkit_MLU270      | cntoolkit_1.7.5-1.ubuntu18.04_amd64.deb      | 官方FTP [下载](ftp://username@download.cambricon.com:8821/product/GJD/MLU270/1.7.602/Ubuntu18.04/CNToolkit/cntoolkit_1.7.5-1.ubuntu18.04_amd64.deb)   |
+| CNCV_MLU270           | cncv_0.4.602-1.ubuntu18.04_amd64.deb         | 官方FTP [下载](ftp://username@download.cambricon.com:8821/product/GJD/MLU270/1.7.602/Ubuntu18.04/CNCV/cncv_0.4.602-1.ubuntu18.04_amd64.deb)   |
 | FFmpeg-MLU            | FFmpeg-MLU                                   | 官方GitHub [下载](https://github.com/Cambricon/ffmpeg-mlu)   |
 | FFmpeg                | FFmpeg                                       | 官方GitHub [下载](https://gitee.com/mirrors/ffmpeg.git)   |
 | EasyDK                | EasyDK                                       | 官方GitHub [下载](https://github.com/Cambricon/easydk)   |
-| OpenCV-MLU-PATCH      | opencv-mlu-rel-r0.2.0.tar.gz                 | 官方FTP[下载](ftp://download.cambricon.com:8821/download/opencv-mlu/opencv-mlu-rel-r0.2.0.tar.gz)   |
+| OpenCV-MLU-PATCH      | opencv-mlu-rel-r0.2.0.tar.gz                 | 官方FTP [下载](ftp://username@download.cambricon.com:8821/download/opencv-mlu/opencv-mlu-rel-r0.2.0.tar.gz)   |
 | OpenCV                | opencv-4.5.3.tar.gz                          | 官方GitHub [下载](https://github.com/opencv/opencv/archive/refs/tags/4.5.3.tar.gz) |
 | OpenCV-Extra          | opencv_extra-4.5.3.tar.gz                    | 官方GitHub [下载](https://github.com/opencv/opencv_extra/archive/refs/tags/4.5.3.tar.gz) |
 

@@ -4,7 +4,7 @@
     </a>
 </p>
 
-[toc]
+[TOC]
 
 # 1. 概述
 
@@ -48,30 +48,30 @@ Neuware SDK: https://cair.cambricon.com/#/home/catalog?type=SDK%20Release
 
 其他开发资料, 可前往[寒武纪开发者社区](https://developer.cambricon.com)注册账号按需下载。也可在官方提供的专属FTP账户指定路径下载。
 
-# Clone #
+# 2. Clone
 ```bash
 git clone https://github.com/CambriconKnight/opencv-mlu-docker-image.git
 ```
 
-# Build #
+# 3. Build
 ```bash
 #编译 opencv-mlu 镜像
 ./build-image-opencv-mlu.sh
 ```
 
-# Load #
+# 4. Load
 ```bash
 #加载Docker镜像
 ./load-image-opencv-mlu.sh
 ```
 
-# Run #
+# 5. Run
 ```bash
 #启动Docker容器
 ./run-container-opencv-mlu.sh
 ```
 
-# Test #
+# 6.Test
 ```bash
 #执行测试脚本
 ./test-opencv-mlu.sh

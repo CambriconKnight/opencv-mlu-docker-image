@@ -4,8 +4,6 @@
     </a>
 </p>
 
-[TOC]
-
 # 1. 概述
 
 本工具集主要基于Docker容器进行[OpenCV-MLU](https://github.com/Cambricon/opencv-mlu)环境搭建与验证。力求压缩寒武纪OpenCV-MLU环境搭建与功能验证的时间成本, 以便快速上手寒武纪OpenCV-MLU。

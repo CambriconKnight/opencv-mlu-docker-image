@@ -10,10 +10,11 @@ set -e
 #               CNToolkit(ftp://username@download.cambricon.com:8821/product/GJD/MLU270/1.7.604/Ubuntu16.04/CNToolkit/cntoolkit_1.7.5-1.ubuntu16.04_amd64.deb)
 #               CNCV(ftp://username@download.cambricon.com:8821/product/GJD/MLU270/1.7.604/Ubuntu16.04/CNCV/cncv_0.4.602-1.ubuntu16.04_amd64.deb)
 #               FFmpeg-MLU(https://github.com/Cambricon/ffmpeg-mlu)
+#               FFmpeg(https://gitee.com/mirrors/ffmpeg.git -b release/4.2 --depth=1)
 #               EasyDK(https://github.com/Cambricon/easydk)
+#               OpenCV-MLU-PATCH(https://github.com/Cambricon/opencv-mlu)
 #               OpenCV-4.5.3(https://github.com/opencv/opencv/tree/4.5.3)
 #               OpenCV-Extra(https://github.com/opencv/opencv_extra)
-#               OpenCV-MLU(https://github.com/Cambricon/opencv-mlu)
 # Notes:
 # -------------------------------------------------------------------------------
 #Dockerfile(16.04/18.04/CentOS)
@@ -32,6 +33,7 @@ fi
 # 2. Copy the dependent packages into the directory of $PATH_WORK
 ## Sync script
 cp -rvf ./docker/build-opencv-mlu.sh ./${PATH_WORK}
+cp -rvf ./docker/test-opencv-mlu.sh ./${PATH_WORK}
 ## Sync CNToolkit
 pushd "${PATH_WORK}"
 if [ -f "${FILENAME_MLU270_CNToolkit}" ];then
@@ -41,7 +43,7 @@ else
     echo -e "${yellow}1.Please download ${FILENAME_MLU270_CNToolkit} from FTP(ftp://download.cambricon.com:8821/***)!${none}"
     echo -e "${yellow}  For further information, please contact us.${none}"
     echo -e "${yellow}2.Copy the dependent packages(${FILENAME_MLU270_CNToolkit}) into the directory!${none}"
-    echo -e "${yellow}  eg:cp -v /data/ftp/product/GJD/MLU270/$VER/Ubuntu16.04/CNToolkit/${FILENAME_MLU270_CNToolkit} ./${PATH_WORK}${none}"
+    echo -e "${yellow}  eg:cp -v ./dependent_files/${FILENAME_MLU270_CNToolkit} ./${PATH_WORK}${none}"
     #Manual copy
     #cp -v /data/ftp/product/GJD/MLU270/1.7.602/Ubuntu16.04/CNToolkit/cntoolkit_1.7.5-1.ubuntu16.04_amd64.deb ./opencv-mlu
     exit -1
@@ -56,7 +58,7 @@ else
     echo -e "${yellow}1.Please download ${FILENAME_MLU270_CNCV} from FTP(ftp://download.cambricon.com:8821/***)!${none}"
     echo -e "${yellow}  For further information, please contact us.${none}"
     echo -e "${yellow}2.Copy the dependent packages(${FILENAME_MLU270_CNCV}) into the directory!${none}"
-    echo -e "${yellow}  eg:cp -v /data/ftp/product/GJD/MLU270/$VER/Ubuntu16.04/CNCV/${FILENAME_MLU270_CNCV} ./${PATH_WORK}${none}"
+    echo -e "${yellow}  eg:cp -v ./dependent_files/${FILENAME_MLU270_CNCV} ./${PATH_WORK}${none}"
     #Manual copy
     #cp -v /data/ftp/product/GJD/MLU270/1.7.604/Ubuntu16.04/CNCV/cncv_0.4.602-1.ubuntu16.04_amd64.deb ./opencv-mlu
     exit -1
@@ -72,7 +74,7 @@ else
     echo -e "${yellow}1.Please download ${FILENAME_PATCH_OPENCV} from FTP(ftp://download.cambricon.com:8821/***)!${none}"
     echo -e "${yellow}  For further information, please contact us.${none}"
     echo -e "${yellow}2.Copy the dependent packages(${FILENAME_PATCH_OPENCV}) into the directory!${none}"
-    echo -e "${yellow}  eg:cp -v /data/github/opencv-mlu/${FILENAME_PATCH_OPENCV} ./${PATH_WORK}${none}"
+    echo -e "${yellow}  eg:cp -v ./dependent_files/${FILENAME_PATCH_OPENCV} ./${PATH_WORK}${none}"
     #Manual copy
     #cp -v /data/github/opencv-mlu/opencv-mlu-rel-r0.2.0.tar.gz ./opencv-mlu
     exit -1

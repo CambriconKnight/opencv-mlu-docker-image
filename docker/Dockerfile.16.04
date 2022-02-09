@@ -52,7 +52,7 @@ RUN if [ "$with_cncv_installed" = "yes" ]; then dpkg -i /root/opencv-mlu/$cncv_p
 
 # 5.Pre-installed software
 #COPY ./docker/build-opencv-mlu.sh /root/opencv-mlu/
-#RUN bash ./build-opencv-mlu.sh
+RUN bash ./build-opencv-mlu.sh
 
 # 6.Set WorkDir
 ENV NEUWARE_HOME=/usr/local/neuware

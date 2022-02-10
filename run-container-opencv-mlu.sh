@@ -2,7 +2,7 @@
 set -e
 # -------------------------------------------------------------------------------
 # Filename:     run-container-opencv-mlu.sh
-# UpdateDate:   2021/09/27
+# UpdateDate:   2022/02/08
 # Description:  Run docker image for IDE.
 # Example:
 #               ./run-container-opencv-mlu.sh

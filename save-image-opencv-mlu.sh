@@ -2,7 +2,7 @@
 set -e
 # -------------------------------------------------------------------------------
 # Filename:     save-image-opencv-mlu.sh
-# UpdateDate:   2021/07/26
+# UpdateDate:   2022/02/08
 # Description:  1. commit: 提交容器到镜像，实现容器持久化；
 #               2. save: 导出镜像文件，实现镜像内容持久化。
 # Example:

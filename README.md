@@ -50,30 +50,66 @@ Neuware SDK: https://cair.cambricon.com/#/home/catalog?type=SDK%20Release
 
 其他开发资料, 可前往[寒武纪开发者社区](https://developer.cambricon.com)注册账号按需下载。也可在官方提供的专属FTP账户指定路径下载。
 
-# 2. Clone
+# 2. Structure
+
+*当前仓库默认基于Docker 进行OpenCV-MLU 环境搭建与验证。按照以下章节步骤即可快速实现OpenCV-MLU环境搭建与验证*
+
+```bash
+.
+├── build-image-opencv-mlu.sh           #此脚本用于编译Docker 镜像用于搭建OpenCV-MLU 环境
+├── clean.sh                            #清理Build出来的临时目录或文件,包括镜像文件,已加载的镜像,已加载的容器等
+├── dependent_files                     #此目录用于存储OpenCV-MLU 环境搭建与验证所依赖的文件
+│   └── README.md
+├── docker                              #此目录主要用于存储编译Docker 镜像及验证OpenCV-MLU 所需依赖文件
+│   ├── build-opencv-mlu.sh             #此脚本用于编译OpenCV-MLU 及相关依赖项, 也可用于裸机下环境搭建
+│   ├── clean.sh                        #清理当前目录下新编译生存的Docker 镜像文件
+│   ├── Dockerfile.16.04                #用于编译Docker 镜像的Dockerfile 文件
+│   ├── pip.conf                        #切换python的pip源
+│   ├── pre_packages.sh                 #安装基于操作系统所需依赖包, 也可用于裸机下环境搭建
+│   ├── sources_16.04.list              #Ubuntu16.04 sources文件
+│   └── test-opencv-mlu.sh              #此脚本用于测试验证OpenCV-MLU各模块: 测试Resize/CVTColor算子、H264/HEVC编码器和解码器、DNN模块
+├── env.sh                              #用于设置全局环境变量
+├── load-image-opencv-mlu.sh            #加载Docker 镜像
+├── README.md                           #README
+├── run-container-opencv-mlu.sh         #启动Docker 容器
+└── save-image-opencv-mlu.sh            #导出镜像文件，实现镜像内容持久化
+```
+
+*如需在裸机HOST上进行环境搭建, 也可以利用[docker](./docker)目录以下脚本实现快速搭建。*
+
+```bash
+.
+├── docker
+│   ├── build-opencv-mlu.sh             #此脚本用于编译OpenCV-MLU 及相关依赖项, 也可用于裸机下环境搭建
+│   ├── pre_packages.sh                 #安装基于操作系统所需依赖包, 也可用于裸机下环境搭建
+│   ├── sources_16.04.list              #Ubuntu16.04 sources文件
+│   └── test-opencv-mlu.sh              #此脚本用于测试验证OpenCV-MLU各模块: 测试Resize/CVTColor算子、H264/HEVC编码器和解码器、DNN模块
+```
+
+# 3. Clone
 ```bash
 git clone https://github.com/CambriconKnight/opencv-mlu-docker-image.git
 ```
 
-# 3. Build
+# 4. Build
 ```bash
 #编译 opencv-mlu 镜像
 ./build-image-opencv-mlu.sh
 ```
 
-# 4. Load
+# 5. Load
 ```bash
 #加载Docker镜像
 ./load-image-opencv-mlu.sh
 ```
 
-# 5. Run
+# 6. Run
 ```bash
 #启动Docker容器
 ./run-container-opencv-mlu.sh
 ```
 
-# 6.Test
+# 7.Test
 ```bash
 #执行测试脚本
 ./test-opencv-mlu.sh

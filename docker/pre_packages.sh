@@ -16,6 +16,7 @@ rm -rf /var/lib/apt/lists/* \
         lcov  \
         ca-certificates \
         net-tools \
+        software-properties-common \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && echo -e "\033[0;32m[apt install... Done] \033[0m"

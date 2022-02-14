@@ -104,12 +104,15 @@ mkdir -pv $PATH_WORK_TMP/build
 pushd $PATH_WORK_TMP/build
 # easydk必须安装在${NEUWARE_HOME}路径
 cmake .. \
-        -DBUILD_SAMPLES=OFF \
-        -DWITH_BANG=OFF \
-        -DWITH_TRACKER=OFF \
-        -DWITH_INFER=OFF \
-        -DWITH_CODEC=OFF \
+        -DBUILD_SAMPLES=ON \
+        -DBUILD_TESTS=OFF \
+        -DWITH_BANG=ON \
+        -DWITH_TRACKER=ON \
+        -DWITH_INFER=ON \
+        -DWITH_CODEC=ON \
+        -DCNIS_WITH_PYTHON_API=OFF \
         -DCMAKE_INSTALL_PREFIX=${NEUWARE_HOME}
+
 make -j4 && make install \
     && ls -lh ${NEUWARE_HOME}/lib64 \
     && echo -e "\033[0;32m[Build ${PATH_WORK_TMP}... Done] \033[0m"

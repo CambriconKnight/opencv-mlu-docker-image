@@ -58,5 +58,6 @@ RUN bash ./build-opencv-mlu.sh
 ENV NEUWARE_HOME=/usr/local/neuware
 ENV LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${NEUWARE_HOME}/lib64
 ENV OPENCV_TEST_DATA_PATH=/root/opencv-mlu/opencv_extra/testdata
-ENV WORK_DIR /root/opencv-mlu
+ENV WORK_DIR=/root/opencv-mlu
+ENV OpenCV_DIR=/root/opencv-mlu/opencv-mlu/opencv/build
 WORKDIR /root/opencv-mlu

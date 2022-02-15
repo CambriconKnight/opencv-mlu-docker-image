@@ -92,6 +92,7 @@ else
     echo "Directory($PATH_WORK_TMP): Exists!"
 fi
 pushd $PATH_WORK_TMP
+#find . -name ".git" | xargs rm -Rf
 # check
 if [ -d "build" ];then
     echo -e "\033[0;32m[Directory(build): Exists! Delete build and rebuild...] \033[0m"
@@ -103,8 +104,18 @@ popd
 mkdir -pv $PATH_WORK_TMP/build
 pushd $PATH_WORK_TMP/build
 # easydk必须安装在${NEUWARE_HOME}路径
+#cmake .. \
+#        -DBUILD_SAMPLES=ON \
+#        -DBUILD_TESTS=OFF \
+#        -DWITH_BANG=ON \
+#        -DWITH_TRACKER=ON \
+#        -DWITH_INFER=ON \
+#        -DWITH_CODEC=ON \
+#        -DCNIS_WITH_PYTHON_API=OFF \
+#        -DCMAKE_INSTALL_PREFIX=${NEUWARE_HOME}
+
 cmake .. \
-        -DBUILD_SAMPLES=ON \
+        -DBUILD_SAMPLES=OFF \
         -DBUILD_TESTS=OFF \
         -DWITH_BANG=ON \
         -DWITH_TRACKER=ON \

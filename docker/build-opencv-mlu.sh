@@ -133,7 +133,7 @@ pushd $PATH_WORK_TMP
 # check
 if [ -d "build" ];then
     echo -e "${green}[Directory(build): Exists! Delete build and rebuild...] ${none}"
-    rm -rf build
+    rm -rvf build
 fi
 popd
 

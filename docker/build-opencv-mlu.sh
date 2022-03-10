@@ -186,8 +186,9 @@ fi
 mv $DIR_PATCH_OPENCV opencv-mlu
 cd opencv-mlu
 #下载OpenCV 4.5.3版本源码 FILENAME_OPENCV
-if [ -f "${FILENAME_OPENCV}" ];then
-    echo -e "${green}File(${FILENAME_OPENCV}): Exists!${none}"
+if [ -f "../${FILENAME_OPENCV}" ];then
+    echo -e "${green}File(../${FILENAME_OPENCV}): Exists!${none}"
+    cp -rvf ../${FILENAME_OPENCV} ./
     #tar zxvf $FILENAME_OPENCV
 else
     echo -e "${red}File(${FILENAME_OPENCV}): Not exist!${none}"

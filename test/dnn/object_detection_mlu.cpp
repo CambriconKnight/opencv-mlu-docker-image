@@ -19,6 +19,7 @@ using namespace cv;
 using namespace dnn;
 
 std::string model_uri = "http://video.cambricon.com/models/MLU270/Primary_Detector/ssd/vgg16_ssd_b4c4_bgra_mlu270.cambricon";
+std::string input_file = "../data/test.mp4";
 Size model_input_size(300, 300);
 
 using Object = std::tuple<int, float, Rect>;

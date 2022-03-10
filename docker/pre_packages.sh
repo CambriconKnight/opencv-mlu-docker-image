@@ -17,6 +17,7 @@ rm -rf /var/lib/apt/lists/* \
         ca-certificates \
         net-tools \
         software-properties-common \
+        libgtk2.0-dev pkg-config \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && echo -e "\033[0;32m[apt install... Done] \033[0m"

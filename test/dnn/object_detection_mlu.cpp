@@ -72,10 +72,11 @@ int main(int argc, char** argv)
 
     //! [Open a video file or an image file or a camera stream]
     VideoCapture cap;
-    if (parser.has("input"))
-        cap.open(parser.get<String>("input"));
-    else
-        cap.open(0);
+    cap.open(input_file);
+    //if (parser.has("input"))
+    //    cap.open(parser.get<String>("input"));
+    //else
+    //    cap.open(0);
     //! [Open a video file or an image file or a camera stream]
 
     // Process frames.

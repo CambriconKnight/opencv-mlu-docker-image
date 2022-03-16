@@ -26,11 +26,9 @@
 | 名称                   | 版本/文件                                    | 备注            |
 | :-------------------- | :-------------------------------             | :--------------- |
 | Linux OS              | Ubuntu16.04/Ubuntu18.04/CentOS7   | 宿主机操作系统   |
-| Driver_MLU270         | neuware-mlu270-driver-aarch64-4.9.8.tar.gz    | [手动下载](ftp://username@download.cambricon.com:8821/product/GJD/MLU270/1.7.602/Ubuntu18.04/Driver/neuware-mlu270-driver-dkms_4.9.5_all.deb)   |
-| CNToolkit_MLU270      | cntoolkit_1.7.5-1.ubuntu18.04_amd64.deb   | [手动下载](ftp://username@download.cambricon.com:8821/product/GJD/MLU270/1.7.602/Ubuntu18.04/CNToolkit/cntoolkit_1.7.5-1.ubuntu18.04_amd64.deb)   |
-| CNToolkit_MLU270      | cntoolkit_1.7.5-1.ubuntu16.04_amd64.deb   | [手动下载](ftp://sdgsxxjt@download.cambricon.com:8821/product/GJD/MLU270/1.7.604/Ubuntu16.04/CNToolkit/cntoolkit_1.7.5-1.ubuntu16.04_amd64.deb)   |
-| CNCV_MLU270           | cncv_0.4.602-1.ubuntu18.04_amd64.deb    | [手动下载](ftp://username@download.cambricon.com:8821/product/GJD/MLU270/1.7.602/Ubuntu18.04/CNCV/cncv_0.4.602-1.ubuntu18.04_amd64.deb)   |
-| CNCV_MLU270           | cncv_0.4.602-1.ubuntu16.04_amd64.deb    | [手动下载](ftp://sdgsxxjt@download.cambricon.com:8821/product/GJD/MLU270/1.7.604/Ubuntu16.04/CNCV/cncv_0.4.602-1.ubuntu16.04_amd64.deb)   |
+| Driver_MLU270         | neuware-mlu270-driver-dkms_4.9.8_all.deb    | [手动下载](ftp://username@download.cambricon.com:8821/product/GJD/MLU270/1.7.604/Ubuntu16.04/Driver/neuware-mlu270-driver-dkms_4.9.8_all.deb)   |
+| CNToolkit_MLU270      | cntoolkit_1.7.5-1.ubuntu16.04_amd64.deb   | [手动下载](ftp://username@download.cambricon.com:8821/product/GJD/MLU270/1.7.604/Ubuntu16.04/CNToolkit/cntoolkit_1.7.5-1.ubuntu16.04_amd64.deb)   |
+| CNCV_MLU270           | cncv_0.4.602-1.ubuntu16.04_amd64.deb    | [手动下载](ftp://username@download.cambricon.com:8821/product/GJD/MLU270/1.7.604/Ubuntu16.04/CNCV/cncv_0.4.602-1.ubuntu16.04_amd64.deb)   |
 | FFmpeg-MLU            | FFmpeg-MLU   | 自动[下载](https://github.com/Cambricon/ffmpeg-mlu)    |
 | FFmpeg                | FFmpeg   | 自动[下载](https://gitee.com/mirrors/ffmpeg.git)    |
 | EasyDK                | EasyDK   | 自动[下载](https://github.com/Cambricon/easydk)   |

@@ -72,7 +72,14 @@ Neuware SDK: https://cair.cambricon.com/#/home/catalog?type=SDK%20Release
 ├── load-image-opencv-mlu.sh            #加载Docker 镜像
 ├── README.md                           #README
 ├── run-container-opencv-mlu.sh         #启动Docker 容器
-└── save-image-opencv-mlu.sh            #导出镜像文件，实现镜像内容持久化
+├── save-image-opencv-mlu.sh            #导出镜像文件，实现镜像内容持久化
+├── sync.sh                             #同步[dependent_files] 到临时目录[opencv-mlu]
+└── test                                #测试OpenCV-MLU 相关功能目录
+    ├── data                            #测试数据
+    ├── dnn                             #测试DNN
+    ├── easydk                          #测试EasyDK
+    ├── README.md                       #测试说明
+    └── video                           #测试视频编解码
 ```
 
 *如需在裸机HOST上进行环境搭建, 也可以利用[docker](./docker)目录以下脚本实现快速搭建。*

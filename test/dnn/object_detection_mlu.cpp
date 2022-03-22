@@ -1,11 +1,14 @@
 #include <fstream>
 #include <sstream>
+#include <iostream>
 
 #include <opencv2/dnn.hpp>
 #include <opencv2/imgproc.hpp>
 #include <opencv2/highgui.hpp>
 
 #include "common.hpp"
+
+#define USE_MULTI_BATCH
 
 std::string keys =
     "{ help  h          | | Print help message. }"
@@ -26,7 +29,9 @@ using Object = std::tuple<int, float, Rect>;
 std::vector<std::string> classes;
 
 void drawPred(int classId, float conf, int left, int top, int right, int bottom, Mat& frame);
+std::vector<std::vector<Object>> readObjects4N(const Mat& prob, Size img_size, float thr);
 std::vector<Object> readObjects(const Mat& prob, Size img_size, float thr);
+
 int main(int argc, char** argv)
 {
     CommandLineParser parser(argc, argv, keys);
@@ -115,14 +120,36 @@ int main(int argc, char** argv)
         std::string label = format("Inference time: %.2f ms", t);
         putText(frame, label, Point(0, 15), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(0, 255, 0));
 
+    #ifdef USE_MULTI_BATCH
+        std::vector<std::vector<Object>> objs = readObjects4N(prob, frame.size(), thr);
+        for (size_t idn = 0; idn < objs.size(); ++idn)
+        {
+            std::vector<Object> recN = objs[idn];
+            for (size_t idx = 0; idx < recN.size(); ++idx)
+            {
+                Rect& box = std::get<2>(recN[idx]);
+                std::cout << "std::get<0>(recN[idx]): [" << std::get<0>(recN[idx]) \
+                        << "] ; box.x: [" << box.x << "] ; box.y: [" << box.y \
+                        << "] ; box.x + box.width: [" <<  box.x + box.width \
+                        << "] ; box.y + box.height: [" << box.y + box.height << "] ;" << std::endl;
+                drawPred(std::get<0>(recN[idx]), std::get<1>(recN[idx]), box.x, box.y,
+                        box.x + box.width, box.y + box.height, frame);
+            }
+        }
+    #else
         std::vector<Object> objs = readObjects(prob, frame.size(), thr);
 
         for (size_t idx = 0; idx < objs.size(); ++idx)
         {
             Rect& box = std::get<2>(objs[idx]);
+            std::cout << "std::get<0>(objs[idx]): [" << std::get<0>(objs[idx]) \
+                        << "] ; box.x: [" << box.x << "] ; box.y: [" << box.y \
+                        << "] ; box.x + box.width: [" <<  box.x + box.width \
+                        << "] ; box.y + box.height: [" << box.y + box.height << "] ;" << std::endl;
             drawPred(std::get<0>(objs[idx]), std::get<1>(objs[idx]), box.x, box.y,
                      box.x + box.width, box.y + box.height, frame);
         }
+    #endif
 
         imshow(kWinName, frame);
     }
@@ -175,4 +202,41 @@ std::vector<Object> readObjects(const Mat& prob, Size img_size, float thr)
         objs.emplace_back(class_id, confidence, roi);
     }
     return objs;
+}
+
+std::vector<std::vector<Object>> readObjects4N(const Mat& prob, Size img_size, float thr)
+{
+    std::vector<std::vector<Object>> batch_objs;
+    const float* base = prob.ptr<float>();
+    int n = prob.size[0];
+    int h = prob.size[1];
+    int w = prob.size[2];
+    int c = prob.size[3];
+    size_t step_size = h * w * c;
+
+    for (int b_idx = 0; b_idx < n; ++b_idx) {
+      std::vector<Object> objs;
+      const float* res = base + b_idx * step_size;
+      int obj_cnt = res[0];
+      res += 64;
+      for (int idx = 0; idx < obj_cnt; ++idx)
+      {
+          int class_id = res[7 * idx + 1];
+          float confidence = res[7 * idx + 2];
+          if (thr > 0.f && confidence < thr) continue;
+          float l = clip(res[7 * idx + 3]);
+          float r = clip(res[7 * idx + 5]);
+          float t = clip(res[7 * idx + 4]);
+          float b = clip(res[7 * idx + 6]);
+
+          Rect roi;
+          roi.x = l * img_size.width;
+          roi.y = t * img_size.height;
+          roi.width = (r - l) * img_size.width;
+          roi.height = (b - t) * img_size.height;
+          objs.emplace_back(class_id, confidence, roi);
+      }
+      batch_objs.emplace_back(std::move(objs));
+    }
+    return batch_objs;
 }
